@@ -1,0 +1,64 @@
+/*less文件其实就是一个文本文件*/
+
+/*1.变量*/
+@baseColor:#e92323;
+a{
+  color: @baseColor;
+}
+/*div{
+  border: 1px solid @baseColor;
+}*/
+
+/*2.相当于函数封装*/
+/*.addRadius{
+   border-radius: 10px;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+ }*/
+/*定义带参的函数*/
+/*.addRadius(@r){
+  border-radius: @r;
+  -webkit-border-radius: @r;
+  -moz-border-radius: @r;
+}*/
+/*可以定义带默认值的参数的函数*/
+.addRadius(@r:5px){
+  border-radius: @r;
+  -webkit-border-radius: @r;
+  -moz-border-radius: @r;
+}
+div{
+  width: 200px;
+  height: 200px;
+  /*.addRadius;*/
+  /*相当于调用带参的函数*/
+  //.addRadius(4px)
+  .addRadius(10px);
+}
+
+/*3.嵌套*/
+header{
+  width: 100%;
+  background-color: @baseColor;
+  > div{
+    width: 100%;
+    border: 1px solid #ccc;
+    .addRadius(6px);
+    a{
+      font-size: 20px;
+      display: block;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+/*header > div{}
+header > div > a{}*/
+
+
+/*4.表达式*/
+span{
+  //color: @baseColor*2;
+  border-color: desaturate(#ff0000, 10%)
+}
